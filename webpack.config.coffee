@@ -1,3 +1,5 @@
+webpack = require 'webpack'
+
 module.exports =
 	entry: './main.coffee'
 	output:
@@ -11,3 +13,10 @@ module.exports =
 			{ test: /\.png$/, use: 'file-loader' }
 		]
 	devtool: 'source-map'
+	devServer:
+		hot: true
+		inline: true
+	plugins: [
+		new webpack.HotModuleReplacementPlugin
+		new webpack.NamedModulesPlugin
+	]
